@@ -123,7 +123,7 @@
   (request request-url
            :type method
            :parser 'json-read
-           :data 'request-data
+           :data request-data
            :error err
            :success succ))
 
