@@ -73,7 +73,6 @@
 
 (defun pastery--get-content ()
   "Get the content of the pastery from buffer or region."
-  (interactive)
   (if (region-active-p)
       (pastery--region-substring (point) (mark))
     (pastery--buffer)))
@@ -89,6 +88,7 @@
   (concat prefix "(" default-value ")" ":"))
 
 (defun pastery--info ()
+  "Get information to about the diff to create it's configuration"
   (let* ((title (read-string "Title: "))
          (dur (read-string (pastery--ask "Duration" pastery-default-duration)))
          (lang (read-string "Language: "))
@@ -139,6 +139,7 @@
 
 (defun pastery-submit ()
   "Create a pastery from a region."
+  (interactive)
   (let* ((request-data (pastery--get-content))
          (from-buffer (current-buffer))
          (user-info (pastery--info))
