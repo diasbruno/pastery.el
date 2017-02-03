@@ -1,7 +1,7 @@
 ;;; pastery.el --- Emacs integration for pastery.net. -*- lexical-binding: t; -*-
 
 ;; Author: Bruno Dias <dias.h.bruno@gmail.com>
-;; Version: 0.1.0
+;; Version: 0.1.1
 ;; Package-Requires: ((emacs "24.1") (request "0.2.0"))
 ;; Keywords: tools
 ;; Homepage: https://github.com/diasbruno/pastery.el
@@ -21,7 +21,7 @@
   "Publish to pastery.net."
   :group 'application)
 
-(defconst pastery-version "0.1.0"
+(defconst pastery-version "0.1.1"
   "Pastery for emacs version.")
 
 (defvar pastery-url "https://www.pastery.net/api/paste/"
