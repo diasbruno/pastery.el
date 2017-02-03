@@ -12,10 +12,9 @@
 
 ;;; Code:
 
-(eval-when-compile
-  (require 'cl))
-
+(require 'cl-lib)
 (require 'request)
+(require 'subr-x)
 
 (defgroup pastery nil
   "Publish to pastery.net."
@@ -59,7 +58,7 @@
 (defun pastery--format-list (pastes)
   "Format a SEQUENCE of pastes."
   (mapconcat 'identity
-             (seq-map (lambda (x) (pastery--format-paste x)) pastes)
+             (mapcar (lambda (x) (pastery--format-paste x)) pastes)
              "\n\n"))
 
 (defun pastery--region-substring (beg end)
@@ -118,7 +117,7 @@
                       paste-lang
                       paste-max-views
                       paste-files)))
-    (remove-if (lambda (x) (eq x nil)) paste)))
+    (cl-remove-if (lambda (x) (eq x nil)) paste)))
 
 (defun pastery--request (method request-url request-data err succ)
   (request request-url
