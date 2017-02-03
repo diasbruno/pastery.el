@@ -1,8 +1,8 @@
-;;; pastery.el --- Emacs integration for pastery.net. -*- lexical-binding: t; -*-
+;;; pastery.el --- paste snippets to pastery.net. -*- lexical-binding: t; -*-
 
 ;; Author: Bruno Dias <dias.h.bruno@gmail.com>
 ;; Version: 0.1.1
-;; Package-Requires: ((emacs "24.1") (request "0.2.0"))
+;; Package-Requires: ((emacs "24.4") (request "0.2.0"))
 ;; Keywords: tools
 ;; Homepage: https://github.com/diasbruno/pastery.el
 
@@ -138,7 +138,7 @@
                       "\n"))
       (pop-to-buffer (current-buffer)))))
 
-(defun pastery/submit ()
+(defun pastery-submit ()
   "Create a pastery from a region."
   (let* ((request-data (pastery--get-content))
          (from-buffer (current-buffer))
@@ -160,7 +160,7 @@
     (set-buffer from-buffer)
     t))
 
-(defun pastery/list ()
+(defun pastery-list ()
   "List all my pastes."
   (interactive)
   (let ((request-url (concat pastery-url "?api_key=" pastery-api-key)))
@@ -173,7 +173,7 @@
                          (pastery--place-buffer "*pastery-list*" data))))
     (message "Fetching list...")))
 
-(defun pastery/get (paste-id)
+(defun pastery-get (paste-id)
   "Get a paste by id."
   (interactive)
   (let ((request-url (concat (concat pastery-url paste-id "/")
@@ -188,7 +188,7 @@
                          (pastery--place-buffer paste-buffer-name data))))
     (message (concat "Fetching paste " paste-id "..."))))
 
-(defun pastery/delete (paste-id)
+(defun pastery-delete (paste-id)
   "Delete a paste by id."
   (interactive)
   (let ((request-url (concat (concat pastery-url paste-id "/")
