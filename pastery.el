@@ -2,11 +2,15 @@
 
 ;; Author: Bruno Dias <dias.h.bruno@gmail.com>
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "24.1") (request "0.2.0")
+;; Package-Requires: ((emacs "24.1") (request "0.2.0"))
 ;; Keywords: tools
 ;; Homepage: https://github.com/diasbruno/pastery.el
 
+;; See license.md.
+
 ;; This file is NOT part of GNU Emacs.
+
+;;; Code:
 
 (eval-when-compile
   (require 'cl))
