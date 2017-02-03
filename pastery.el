@@ -184,5 +184,20 @@
                          (pastery--place-buffer paste-buffer-name data))))
     (message (concat "Fetching paste " paste-id "..."))))
 
+(defun pastery/delete (paste-id)
+  "Delete a paste by id."
+  (interactive)
+  (let ((request-url (concat (concat pastery-url paste-id "/")
+                             (concat "?" "api_key" "=" pastery-api-key))))
+    (pastery--request "DELETE" request-url nil
+                      (cl-function
+                       (lambda (&rest args &key error-thrown &allow-other-keys)
+                         (print error-thrown)))
+                      (cl-function
+                       (lambda (&key data &allow-other-keys)
+                         (message "...done."))))
+    (message (concat "Deleting paste " paste-id "..."))))
+
+
 (provide 'pastery)
 ;;; pastery.el ends here
