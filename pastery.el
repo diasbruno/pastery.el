@@ -101,23 +101,21 @@
          (paste-duration (if (not (string-empty-p dur))
                              `(duration . ,dur)
                            `(duration . ,pastery-default-duration)))
-
          (paste-lang (if (not (string-empty-p lang))
-                         `(language . lang)
+                         `(language . ,lang)
                        nil))
          (paste-max-views (if (not (string-empty-p maxviews))
-                              `(max-views . maxviews)
+                              `(max-views . ,maxviews)
                             nil))
          (paste-files (if (not (string-empty-p files))
-                          `(files . files)
-                        nil))
-
-         (paste (list paste-title
-                      paste-duration
-                      paste-lang
-                      paste-max-views
-                      paste-files)))
-    (cl-remove-if (lambda (x) (eq x nil)) paste)))
+                          `(files . ,files)
+                        nil)))
+    (cl-remove-if (lambda (x) (eq x nil))
+                  (list paste-title
+                        paste-duration
+                        paste-lang
+                        paste-max-views
+                        paste-files))))
 
 (defun pastery--request (method request-url request-data err succ)
   (request request-url
