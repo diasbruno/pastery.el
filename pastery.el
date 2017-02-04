@@ -1,7 +1,7 @@
 ;;; pastery.el --- paste snippets to pastery.net. -*- lexical-binding: t; -*-
 
 ;; Author: Bruno Dias <dias.h.bruno@gmail.com>
-;; Version: 0.1.2
+;; Version: 0.1.5
 ;; Package-Requires: ((emacs "24.4") (request "0.2.0"))
 ;; Keywords: tools
 ;; Homepage: https://github.com/diasbruno/pastery.el
@@ -20,7 +20,7 @@
   "Publish to pastery.net."
   :group 'application)
 
-(defconst pastery-version "0.1.2"
+(defconst pastery-version "0.1.5"
   "Pastery for emacs version.")
 
 (defvar pastery-url "https://www.pastery.net/api/paste/"
