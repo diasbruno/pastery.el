@@ -147,7 +147,9 @@
          (paste-info (mapconcat
                       (lambda (x) (pastery--query-item (car x) (cdr x)))
                       user-info "&"))
-         (request-url (concat pastery-url paste-info)))
+         (request-url (concat pastery-url
+                              "?api_key=" pastery-api-key "&"
+                              paste-info)))
     (pastery--request "POST" request-url request-data
                       (cl-function
                        (lambda (&rest args &key error-thrown &allow-other-keys)
