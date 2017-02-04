@@ -67,15 +67,11 @@
       (buffer-substring-no-properties beg end)
     ""))
 
-(defun pastery--buffer ()
-  "Get the content from the current buffer."
-  (pastery--region-substring (point-min) (point-max)))
-
 (defun pastery--get-content ()
   "Get the content of the pastery from buffer or region."
   (if (region-active-p)
       (pastery--region-substring (point) (mark))
-    (pastery--buffer)))
+    (pastery--region-substring (point-min) (point-max))))
 
 (defun pastery--query-item (key value)
   "Creates a query item only if available."
