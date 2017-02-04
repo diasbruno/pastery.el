@@ -125,14 +125,12 @@
            :error err
            :success succ))
 
-(defun pastery--place-buffer (paste-buffer-name data)
+(defun pastery--write-to-buffer (paste-buffer-name title content)
   "Place the data to a buffer."
-  (when data
+  (when content
     (with-current-buffer (get-buffer-create paste-buffer-name)
       (erase-buffer)
-      (insert (concat "Pastery list\n\n"
-                      (pastery--format-list (cdar data))
-                      "\n"))
+      (insert (concat title "\n\n" content "\n"))
       (pop-to-buffer (current-buffer)))))
 
 ;;;###autoload
@@ -155,9 +153,10 @@
                       (cl-function
                        (lambda (&key data &allow-other-keys)
                          (let* ((paste-id (cdr (assoc 'id data)))
-                                (paste-buffer-name (concat "*pastery-" paste-id "*"))
-                                (paste-data `((pastes . ,(vector data)))))
-                           (pastery--place-buffer paste-buffer-name paste-data)))))
+                                (paste-buffer-name (concat "*pastery-" paste-id "*")))
+                           (pastery--write-to-buffer paste-buffer-name
+                                                     (concat "Pastery " paste-id)
+                                                     (pastery--format-paste data))))))
     (set-buffer from-buffer)
     t))
 
@@ -172,7 +171,9 @@
                          (print error-thrown)))
                       (cl-function
                        (lambda (&key data &allow-other-keys)
-                         (pastery--place-buffer "*pastery-list*" data))))
+                         (pastery--write-to-buffer "*pastery-list*"
+                                                   "Pastery List"
+                                                   (pastery--format-list (cdar data))))))
     (message "Fetching list...")))
 
 ;;;###autoload
@@ -188,7 +189,9 @@
                          (print error-thrown)))
                       (cl-function
                        (lambda (&key data &allow-other-keys)
-                         (pastery--place-buffer paste-buffer-name data))))
+                         (pastery--write-to-buffer paste-buffer-name
+                                                   "Pastery"
+                                                   (pastery--format-list (cdar data))))))
     (message (concat "Fetching paste " paste-id "..."))))
 
 ;;;###autoload
