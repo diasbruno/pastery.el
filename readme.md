@@ -49,7 +49,7 @@ This will open a buffer with the information of the paste where you can get its 
 
 ### to submit a paste
 
-With you have a region selected, it will be sent. To send an entire buffer just call the function.
+If you have a region selected, it will be sent. To send an entire buffer just call the function.
 
 `M-x pastery-submit`
 
