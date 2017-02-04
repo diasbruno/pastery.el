@@ -131,6 +131,7 @@
     (with-current-buffer (get-buffer-create paste-buffer-name)
       (erase-buffer)
       (insert (concat title "\n\n" content "\n"))
+      (view-buffer (current-buffer))
       (pop-to-buffer (current-buffer)))))
 
 ;;;###autoload
