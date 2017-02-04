@@ -137,6 +137,7 @@
                       "\n"))
       (pop-to-buffer (current-buffer)))))
 
+;;;###autoload
 (defun pastery-submit ()
   "Create a pastery from a region."
   (interactive)
@@ -160,6 +161,7 @@
     (set-buffer from-buffer)
     t))
 
+;;;###autoload
 (defun pastery-list ()
   "List all my pastes."
   (interactive)
@@ -173,6 +175,7 @@
                          (pastery--place-buffer "*pastery-list*" data))))
     (message "Fetching list...")))
 
+;;;###autoload
 (defun pastery-get (paste-id)
   "Get a paste by id."
   (interactive)
@@ -188,6 +191,7 @@
                          (pastery--place-buffer paste-buffer-name data))))
     (message (concat "Fetching paste " paste-id "..."))))
 
+;;;###autoload
 (defun pastery-delete (paste-id)
   "Delete a paste by id."
   (interactive)
