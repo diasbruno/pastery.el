@@ -176,7 +176,8 @@
 ;;;###autoload
 (defun pastery-get (paste-id)
   "Get a paste by id."
-  (interactive)
+  (interactive
+   (list (read-string "Paste ID: ")))
   (let ((request-url (concat (concat pastery-url paste-id "/")
                              (concat "?" "api_key" "=" pastery-api-key)))
         (paste-buffer-name (concat "*pastery-" paste-id "*")))
@@ -194,7 +195,8 @@
 ;;;###autoload
 (defun pastery-delete (paste-id)
   "Delete a paste by id."
-  (interactive)
+  (interactive
+   (list (read-string "Paste ID: ")))
   (let ((request-url (concat (concat pastery-url paste-id "/")
                              (concat "?" "api_key" "=" pastery-api-key))))
     (pastery--request "DELETE" request-url nil
