@@ -4,7 +4,7 @@ Paste buffer or region to pastery.net from emacs.
 
 ## install
 
-### without package manager
+### from source
 
 Get `pastery.el` and add to load paths with:
 
@@ -12,15 +12,15 @@ Get `pastery.el` and add to load paths with:
 (load-to-list 'load-path "/PATH/TO/pastery.el")
 ```
 
-### melpa
+### from melpa
 
-To included `melpa` to your package archives.
+To include `melpa` to your package archives.
 
 ```emacs-lisp
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 ```
 
-Simply download from the `M-x package-list-packages RET` and include to your `.emacs`.
+Then simply download from `M-x package-list-packages RET` and include to your `.emacs`.
 
 ```emacs-lisp
 (require 'pastery)
