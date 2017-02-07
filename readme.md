@@ -12,7 +12,7 @@ Get `pastery.el` and add to load paths with:
 (load-to-list 'load-path "/PATH/TO/pastery.el")
 ```
 
-### melpa (submitted, but not available yet)
+### melpa
 
 To included `melpa` to your package archives.
 
