@@ -1,4 +1,4 @@
-# pastery.el
+# pastery.el <a href="https://melpa.org/#/pastery"><img alt="MELPA" src="https://melpa.org/packages/pastery-badge.svg"/></a>
 
 Paste buffer or region to pastery.net from emacs.
 
