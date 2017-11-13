@@ -37,15 +37,9 @@ Setup your pastery key in `customize-variable`
 
 ### to list
 
-`M-x pastery-list`
+`M-x pastery`
 
-This will open a buffer with a list of all you pastes available.
-
-### to get a single paste
-
-`M-x pastery-get PASTE_ID`
-
-This will open a buffer with the information of the paste where you can get its URL.
+This will open a buffer with a list of all your pastes available.
 
 ### to submit a paste
 
