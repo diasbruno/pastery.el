@@ -2,7 +2,7 @@
 
 ;; Author: Bruno Dias <dias.h.bruno@gmail.com>
 ;; Version: 0.2.1
-;; Package-Requires: ((emacs "24.4") (request "0.2.0"))
+;; Package-Requires: ((emacs "24.4"))
 ;; Keywords: tools
 ;; Homepage: https://github.com/diasbruno/pastery.el
 
@@ -35,14 +35,20 @@
   (concat pastery-url id "/" "?" "api_key" "=" pastery-api-key))
 
 (defun pastery-net--request (method url data err succ)
-  "Make the request to the api with METHOD, URL, DATA and the callbacks.
-ERR and SUCC."
-  (request url
-           :type method
-           :parser 'json-read
-           :data data
-           :error err
-           :success succ))
+  "Make the request to the api."
+  (setf url-request-data data)
+  (setf url-request-method method)
+  (url-retrieve url
+                (cl-function (lambda (response data)
+                               (let ((status (car response)))
+                                 (progn
+                                   (print "DATA:")
+                                   (print data)
+                                   (print "RESPONSE")
+                                   (print response)
+                                   ))))
+                nil
+                t))
 
 (defun pastery-net--get-list-of-my-pastes (err-cb succ-cb)
   "Fetch all available pastes.  Use callbacks ERR-CB and SUCC-CB."

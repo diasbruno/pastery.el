@@ -2,7 +2,7 @@
 
 ;; Author: Bruno Dias <dias.h.bruno@gmail.com>
 ;; Version: 0.2.1
-;; Package-Requires: ((emacs "24.4") (request "0.2.0"))
+;; Package-Requires: ((emacs "24.4"))
 ;; Keywords: tools
 ;; Homepage: https://github.com/diasbruno/pastery.el
 
@@ -19,7 +19,6 @@
 ;;; Code:
 
 (require 'cl-lib)
-(require 'request)
 (require 'subr-x)
 (require 'pastery-data)
 (require 'pastery-buffer)
